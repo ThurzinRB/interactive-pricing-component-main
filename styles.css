@@ -1,0 +1,60 @@
+:root {
+    --main-background: hsl(230, 100%, 99%);
+    --pricing-component-background: hsl(0, 0%, 100%);
+    --cta-text: hsl(226, 100%, 87%);
+
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+}
+
+html{
+    background: var(--main-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+}
+header strong{
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pricing{
+    width: 33%;
+    height: 50%;
+    background: var(--pricing-component-background);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.11);
+    border-radius: 10px;
+}
+
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
