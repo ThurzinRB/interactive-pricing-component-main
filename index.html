@@ -13,32 +13,98 @@
 
   <title>Frontend Mentor | Interactive pricing component</title>
   <link rel="stylesheet" href="styles.css">
-  
+
+  <script>
+    // console.log(document.getElementsByClassName("slider"));
+    function resetAnimation(pageviews,price,npageviews, vprice) {
+      pageviews.innerHTML = npageviews;
+      pageviews.style.animation = 'none';
+      pageviews.offsetHeight;
+      pageviews.style.animation = null;
+      pageviews.style.animation = 'changecolor 1s ease-in-out';
+
+      price.innerHTML = vprice;
+      price.style.animation = 'none';
+      price.offsetHeight;
+      price.style.animation = null;
+      price.style.animation = 'changecolor-prices 1s ease-in-out';
+
+
+    }
+    function handleInput(obj) {
+      console.log(typeof (obj.value))
+      var value = (obj.value - obj.min) / (obj.max - obj.min) * 100
+      obj.style.background = 'linear-gradient(to right, var(--full-slider-bar) 0%, var(--full-slider-bar) ' + value + '%, var(--empty-slider-bar) ' + value + '%, var(--empty-slider-bar) 100%)'
+      let pageviews = document.getElementsByClassName('pageviews-p').item(0);
+      let price = document.getElementsByClassName('price-content').item(0);
+      switch (obj.value) {
+        case '1':
+          resetAnimation(pageviews,price,'10K pageviews', '$8.00')
+          break;
+        case '2':
+          resetAnimation(pageviews,price,'50K pageviews', '$12.00')
+          break;
+        case '3':
+          resetAnimation(pageviews,price,'100K pageviews', '$16.00')
+          break;
+        case '4':
+          resetAnimation(pageviews,price,'500K pageviews', '$24.00')
+          break;
+        case '5':
+          resetAnimation(pageviews,price,'1M pageviews', '$36.00')
+          break;
+
+
+
+
+
+      }
+    }
+  </script>
+
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  
+
 </head>
 
 <body>
   <header>
+    <img src="images/pattern-circles.svg" alt="circles" class="circles">
     <strong>
       Simple, traffic-based pricing
     </strong>
     <p>
       Sign-up for our 30-day trial. No credit card required.
     </p>
-  
+
   </header>
   <div class="pricing">
-    Pageviews
-    $ /month
-  
+    <div class="pageprices">
+      <div class="pageviews">
+        <p class="pageviews-p">100K Pageviews</p>
+
+      </div>
+      <div class="prices">
+        <strong class="price-content">$16.00</strong>
+        /month
+      </div>
+      <!-- 10K pageviews / $8 per month
+- 50K pageviews / $12 per month
+- 100K pageviews / $16 per month
+- 500k pageviews / $24 per month
+- 1M pageviews / $36 per month -->
+    </div>
+    <div class="slider-container">
+      <input type="range" min="1" max="5" value="3" class="slider" id="myRange" oninput="handleInput(this)">
+
+    </div>
+
     Monthly Billing
     Yearly Billing 25% discount
-  
+
     Unlimited websites
     100% data ownership
     Email reports
-  
+
     Start my trial
 
   </div>
