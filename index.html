@@ -16,6 +16,13 @@
 
   <script>
     // console.log(document.getElementsByClassName("slider"));
+    const listofprices = [
+      {npageviews:'10K pageviews', vprice: '$8.00'},
+      {npageviews:'50K pageviews', vprice: '$12.00'},
+      {npageviews:'100K pageviews', vprice: '$16.00'},
+      {npageviews:'500K pageviews', vprice: '$24.00'},
+      {npageviews:'1M pageviews', vprice: '$36.00'},
+    ]
     function resetAnimation(pageviews,price,npageviews, vprice) {
       pageviews.innerHTML = npageviews;
       pageviews.style.animation = 'none';
@@ -32,34 +39,16 @@
 
     }
     function handleInput(obj) {
-      console.log(typeof (obj.value))
-      var value = (obj.value - obj.min) / (obj.max - obj.min) * 100
+      const value = (obj.value - obj.min) / (obj.max - obj.min) * 100
       obj.style.background = 'linear-gradient(to right, var(--full-slider-bar) 0%, var(--full-slider-bar) ' + value + '%, var(--empty-slider-bar) ' + value + '%, var(--empty-slider-bar) 100%)'
-      let pageviews = document.getElementsByClassName('pageviews-p').item(0);
-      let price = document.getElementsByClassName('price-content').item(0);
-      switch (obj.value) {
-        case '1':
-          resetAnimation(pageviews,price,'10K pageviews', '$8.00')
-          break;
-        case '2':
-          resetAnimation(pageviews,price,'50K pageviews', '$12.00')
-          break;
-        case '3':
-          resetAnimation(pageviews,price,'100K pageviews', '$16.00')
-          break;
-        case '4':
-          resetAnimation(pageviews,price,'500K pageviews', '$24.00')
-          break;
-        case '5':
-          resetAnimation(pageviews,price,'1M pageviews', '$36.00')
-          break;
+      const pageviews = document.getElementsByClassName('pageviews-p').item(0);
+      const price = document.getElementsByClassName('price-content').item(0);
 
-
-
-
-
-      }
+      resetAnimation(pageviews,price,listofprices[obj.value-1].npageviews, listofprices[obj.value-1].vprice)
+      
     }
+
+    
   </script>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
