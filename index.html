@@ -17,20 +17,22 @@
   <script>
     // console.log(document.getElementsByClassName("slider"));
     const listofprices = [
-      {npageviews:'10K pageviews', vprice: '$8.00'},
-      {npageviews:'50K pageviews', vprice: '$12.00'},
-      {npageviews:'100K pageviews', vprice: '$16.00'},
-      {npageviews:'500K pageviews', vprice: '$24.00'},
-      {npageviews:'1M pageviews', vprice: '$36.00'},
+      { npageviews: '10K pageviews', vprice: 8 },
+      { npageviews: '50K pageviews', vprice: 12 },
+      { npageviews: '100K pageviews', vprice: 16 },
+      { npageviews: '500K pageviews', vprice: 24 },
+      { npageviews: '1M pageviews', vprice: 36 },
     ]
-    function resetAnimation(pageviews,price,npageviews, vprice) {
+
+    var discount = 0;
+    function resetAnimationBoth(pageviews, price, npageviews, vprice) {
       pageviews.innerHTML = npageviews;
       pageviews.style.animation = 'none';
       pageviews.offsetHeight;
       pageviews.style.animation = null;
       pageviews.style.animation = 'changecolor 1s ease-in-out';
 
-      price.innerHTML = vprice;
+      price.innerHTML = `$${vprice}.00`;
       price.style.animation = 'none';
       price.offsetHeight;
       price.style.animation = null;
@@ -38,17 +40,45 @@
 
 
     }
-    function handleInput(obj) {
-      const value = (obj.value - obj.min) / (obj.max - obj.min) * 100
-      obj.style.background = 'linear-gradient(to right, var(--full-slider-bar) 0%, var(--full-slider-bar) ' + value + '%, var(--empty-slider-bar) ' + value + '%, var(--empty-slider-bar) 100%)'
+
+    function resetAnimationPrice(price, vprice){
+
+      price.innerHTML = `$${vprice}.00`;
+      price.style.animation = 'none';
+      price.offsetHeight;
+      price.style.animation = null;
+      price.style.animation = 'changecolor-prices 1s ease-in-out';
+
+    }
+
+
+    function handleInputSlider(slider) {
+      const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+      slider.style.background = 'linear-gradient(to right, var(--full-slider-bar) 0%, var(--full-slider-bar) ' + value + '%, var(--empty-slider-bar) ' + value + '%, var(--empty-slider-bar) 100%)'
       const pageviews = document.getElementsByClassName('pageviews-p').item(0);
       const price = document.getElementsByClassName('price-content').item(0);
 
-      resetAnimation(pageviews,price,listofprices[obj.value-1].npageviews, listofprices[obj.value-1].vprice)
-      
+      resetAnimationBoth(pageviews, price, listofprices[slider.value - 1].npageviews, listofprices[slider.value - 1].vprice*(1-discount))
+
+    }
+    
+    function handleInputToggle (){
+      const toggle = document.getElementById("myToggle");
+      const price = document.getElementsByClassName('price-content').item(0);
+      const slider = document.getElementById('myRange');
+      const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+
+      if(toggle.checked){
+        discount = 0.25;
+      }else{
+        discount =0;
+      }
+
+      resetAnimationPrice(price, listofprices[slider.value - 1].vprice*(1-discount));
+
     }
 
-    
+
   </script>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -76,25 +106,58 @@
         <strong class="price-content">$16.00</strong>
         /month
       </div>
-      <!-- 10K pageviews / $8 per month
-- 50K pageviews / $12 per month
-- 100K pageviews / $16 per month
-- 500k pageviews / $24 per month
-- 1M pageviews / $36 per month -->
     </div>
     <div class="slider-container">
-      <input type="range" min="1" max="5" value="3" class="slider" id="myRange" oninput="handleInput(this)">
+      <input type="range" min="1" max="5" value="3" class="slider" id="myRange" oninput="handleInputSlider(this)">
 
     </div>
 
-    Monthly Billing
-    Yearly Billing 25% discount
+    <div class="monthly-or-year">
+      <div class="monthly">
+        Monthly Billing
 
-    Unlimited websites
-    100% data ownership
-    Email reports
+      </div>
+      <label class="toggle" for="myToggle" onclick="handleInputToggle()">
+        <input class="toggle__input" type="checkbox" id="myToggle">
+        <div class="toggle__fill"></div>
+      </label>
+      <div class="yearly">
+        Yearly Billing
+        <div class="discount">
+          25% discount
+        </div>
+        
+      </div>
 
-    Start my trial
+    </div>
+
+    <div class="bottom-div">
+      <div class="checkboxes-wrapper">
+        <p>
+          <img src="images/icon-check.svg" alt="icon-check">
+          Unlimited websites
+        </p>
+        <p>
+          <img src="images/icon-check.svg" alt="icon-check">
+          100% data ownership
+        </p>
+        <p>
+          <img src="images/icon-check.svg" alt="icon-check">
+          Email reports
+        </p>
+        
+
+      </div>
+      <div class="button-wrapper">
+        <button href = "#">
+          Start my trial
+  
+        </button>  
+
+      </div>
+
+
+    </div>
 
   </div>
 
@@ -103,7 +166,7 @@
 <footer>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="https://github.com/ThurzinRB" target="_blank">Arthur Bello</a>.
   </div>
 
 </footer>
