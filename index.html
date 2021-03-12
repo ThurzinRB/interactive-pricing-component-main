@@ -41,7 +41,7 @@
 
     }
 
-    function resetAnimationPrice(price, vprice){
+    function resetAnimationPrice(price, vprice) {
 
       price.innerHTML = `$${vprice}.00`;
       price.style.animation = 'none';
@@ -58,23 +58,23 @@
       const pageviews = document.getElementsByClassName('pageviews-p').item(0);
       const price = document.getElementsByClassName('price-content').item(0);
 
-      resetAnimationBoth(pageviews, price, listofprices[slider.value - 1].npageviews, listofprices[slider.value - 1].vprice*(1-discount))
+      resetAnimationBoth(pageviews, price, listofprices[slider.value - 1].npageviews, listofprices[slider.value - 1].vprice * (1 - discount))
 
     }
-    
-    function handleInputToggle (){
+
+    function handleInputToggle() {
       const toggle = document.getElementById("myToggle");
       const price = document.getElementsByClassName('price-content').item(0);
       const slider = document.getElementById('myRange');
       const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
 
-      if(toggle.checked){
+      if (toggle.checked) {
         discount = 0.25;
-      }else{
-        discount =0;
+      } else {
+        discount = 0;
       }
 
-      resetAnimationPrice(price, listofprices[slider.value - 1].vprice*(1-discount));
+      resetAnimationPrice(price, listofprices[slider.value - 1].vprice * (1 - discount));
 
     }
 
@@ -119,7 +119,7 @@
       </div>
       <label class="toggle" for="myToggle" onclick="handleInputToggle()">
         <input class="toggle__input" type="checkbox" id="myToggle">
-        <div class="toggle__fill"></div>
+        <span class="toggle__fill"></span>
       </label>
       <div class="yearly">
         Yearly Billing
@@ -128,7 +128,7 @@
             25% discount
           </span>
         </div>
-        
+
       </div>
 
     </div>
@@ -147,14 +147,14 @@
           <img src="images/icon-check.svg" alt="icon-check">
           Email reports
         </p>
-        
+
 
       </div>
       <div class="button-wrapper">
-        <button href = "#">
+        <button>
           Start my trial
-  
-        </button>  
+
+        </button>
 
       </div>
 
@@ -164,13 +164,13 @@
   </div>
 
 
-</body>
-<footer>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="https://github.com/ThurzinRB" target="_blank">Arthur Bello</a>.
-  </div>
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/ThurzinRB" target="_blank">Arthur Bello</a>.
+    </div>
 
-</footer>
+  </footer>
+</body>
 
 </html>
