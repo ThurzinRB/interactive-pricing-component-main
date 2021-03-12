@@ -295,6 +295,11 @@ body {
     header strong{
         font-size: 1.3rem;
     }
+    header p{
+        padding: 5vw;
+        text-align: center;
+
+    }
 
     .pricing{
         min-width: 0;
