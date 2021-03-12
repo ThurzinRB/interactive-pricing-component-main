@@ -1,7 +1,5 @@
 # [Frontend Mentor - Interactive pricing component](https://thurzinrb.github.io/faq-accordion-card-main/index.html)
 
-![Design preview for the Interactive pricing component coding challenge](./design/desktop-preview.jpg)
-
 ## Welcome! 👋
 
 Thanks for checking out my solution for this front-end coding challenge from [Frontend Mentor](https://www.frontendmentor.io). This was my second challenge from this site, you can check-out my [first solution](https://github.com/ThurzinRB/faq-accordion-card-main).
