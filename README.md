@@ -1,4 +1,4 @@
-# [Frontend Mentor - Interactive pricing component](https://thurzinrb.github.io/faq-accordion-card-main/index.html)
+# [Frontend Mentor - Interactive pricing component](https://thurzinrb.github.io/interactive-pricing-component-main/index.html)
 
 ## Welcome! 👋
 
