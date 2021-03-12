@@ -46,6 +46,10 @@ header strong {
     color: var(--dark-blue);
     margin-top: 4vh;
     margin: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 header p {
@@ -67,6 +71,7 @@ body {
 
 .pricing {
     width: 40vw;
+    min-width: 400px;
     height: 50vh;
     background: var(--pricing-component-background);
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.11);
@@ -99,7 +104,7 @@ body {
     background: linear-gradient(to right, var(--full-slider-bar) 0%, var(--full-slider-bar) 50%, var(--empty-slider-bar) 50%, var(--empty-slider-bar) 100%);
     border-radius: 8px;
     height: 7px;
-    width: 356px;
+    width: 90%;
     outline: none;
     transition: background 450ms ease-in;
     -webkit-appearance: none;
@@ -142,8 +147,7 @@ body {
     width: 4rem;
 }
 
-
-.monthly-or-year{
+.monthly-or-year {
     display: grid;
     grid-template-columns: 1fr 3.5rem 1fr;
     justify-content: center;
@@ -152,17 +156,17 @@ body {
     margin-bottom: 1rem;
 }
 
-.monthly{
+.monthly {
     display: flex;
     justify-content: flex-end;
 }
 
-.yearly{
+.yearly {
     display: flex;
     flex-direction: row;
 }
 
-.discount{
+.discount {
     background: hsl(14, 92%, 95%);
     color: hsl(15, 100%, 70%);
     width: fit-content;
@@ -171,47 +175,43 @@ body {
     padding-right: 0.35rem;
     margin-left: 0.35rem;
     margin-right: 0.35rem;
+}
 
+.discount span{
+    color: hsl(15, 100%, 70%);
 
 }
 
 
-.toggle{
+.toggle {
     --toggle-width: 2.5rem;
     --toggle-height: calc(var(--toggle-width) / 2);
     --toggle-border-radius: calc(var(--toggle-height) / 2);
-    
     display: flex;
     justify-content: center;
     cursor: pointer;
 }
 
-
-
-
-.toggle__input{
+.toggle__input {
     display: none;
 }
 
-.toggle__fill{
+.toggle__fill {
     position: relative;
     width: var(--toggle-width);
     height: var(--toggle-height);
     border-radius: var(--toggle-border-radius);
-
     background: var(--toggle-bg);
-
     transition: background .5s;
-
 }
 
-.toggle__input:checked ~ .toggle__fill{
+.toggle__input:checked~.toggle__fill {
     background: var(--thumb-bg);
 }
 
-.toggle__fill::after{
+.toggle__fill::after {
     content: "";
-    height:var(--toggle-height);
+    height: var(--toggle-height);
     width: var(--toggle-height);
     border-radius: var(--toggle-border-radius);
     position: absolute;
@@ -223,28 +223,24 @@ body {
     border: 3px solid var(--toggle-bg);
 }
 
-.toggle__input:checked ~ .toggle__fill::after{
+.toggle__input:checked~.toggle__fill::after {
     transform: translateX(var(--toggle-height));
     border: 3px solid var(--thumb-bg);
-
 }
 
-
-
-.bottom-div{
+.bottom-div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-top: 1px solid var(--toggle-bg);
     padding: 1rem;
-
 }
 
-.checkboxes-wrapper{
+.checkboxes-wrapper {
     padding-left: 20%;
     font-size: 0.8rem;
 }
 
-.button-wrapper{
+.button-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -264,7 +260,6 @@ body {
 .button-wrapper button:hover {
     background: var(--thumb-bg);
     color: var(--pricing-component-background);
-
 }
 
 .attribution {
@@ -277,10 +272,6 @@ body {
 .attribution a {
     color: hsl(228, 45%, 44%);
 }
-
-
-
-
 
 @keyframes changecolor {
     0% {
@@ -297,5 +288,48 @@ body {
     }
     100% {
         color: var(--dark-blue);
+    }
+}
+
+@media screen and (max-width: 460px) {
+    header strong{
+        font-size: 1.3rem;
+    }
+
+    .pricing{
+        min-width: 0;
+        width: 90vw;
+        height: 60vh;
+    }
+    .discount{
+        height: 1rem;
+    }
+    .discount::after{
+        content: '-25%';
+    }
+    .discount span{
+        display: none;
+    }
+    .bottom-div{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .button-wrapper button {
+        margin: 1rem;
+    }
+    
+    .attribution{
+        top: 5vh;
+    }
+    .pageprices{
+        height: 20%;
+    }
+    .checkboxes-wrapper{
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
