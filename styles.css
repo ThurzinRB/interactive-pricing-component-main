@@ -135,9 +135,17 @@ body {
 .slider::-moz-range-thumb {
     width: 2px;
     height: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     border: 0;
-    background: url('images/icon-slider.svg');
+    background-color: var(--thumb-bg);
+    background-position: center;
+    background-image: url('images/icon-slider.svg');
+    background-repeat: no-repeat;
+    box-shadow: 0 0 10px var(--thumb-bg);
     cursor: pointer;
+    position: relative;
 }
 
 .prices strong {
